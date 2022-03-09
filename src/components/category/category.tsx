@@ -1,15 +1,15 @@
 import React, { useContext } from 'react'
 import { CardContext } from '../../context'
-import { Category, Entity } from '../../types'
+import { Category as CategoryType, Entity } from '../../types'
 import { AddEntityDataForm } from '../add-entity-data-form'
 import { Card } from '../card'
 
-type CategoryColumnProps = {
-  data: Category;
+type CategoryProps = {
+  data: CategoryType;
   index: number
 }
 
-export const CategoryColumn: React.FC<CategoryColumnProps> = ({ data, index }) => {
+export const Category: React.FC<CategoryProps> = ({ data, index }) => {
   const {handlers: cardHandlers} = useContext(CardContext) 
   return (
     <div className="category-column">

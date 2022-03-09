@@ -1,19 +1,17 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { CardContext, CardContextType } from '../../context'
-import { mockCategoriesData } from '../../mockData'
-import { mockCardsData } from '../../mockData/cards'
-import {  Card, Category, Entity } from '../../types'
+import {  Card, Category as CategoryType, Entity } from '../../types'
 import { AddEntityDataForm } from '../add-entity-data-form'
-import { CategoryColumn } from '../category-column'
+import { Category } from '../category'
 import { v4 as uuidv4 } from 'uuid';
 import {usePersistedState} from '../../hooks';
 
 export const App = () => {
-  const [categories, setCategories] = usePersistedState<Category[]>(Entity.CATEGORY, []);
+  const [categories, setCategories] = usePersistedState<CategoryType[]>(Entity.CATEGORY, []);
   const [cards, setCards] = usePersistedState<Card[]>(Entity.CARD, [])
 
   const addCategory = (title: string) => {
-    const newCategory: Category = {
+    const newCategory: CategoryType = {
       title,
       cardIds: []
     }
@@ -27,7 +25,7 @@ export const App = () => {
     };
 
     const category = categories[categoryIndex]
-    const newCategory: Category = {
+    const newCategory: CategoryType = {
       ...category,
       cardIds: [...category.cardIds, newCard.id]
     }
@@ -49,7 +47,7 @@ export const App = () => {
     let newCategoriesState = categories.slice()
 
     const currentCategory = categories[currentCategoryIndex];
-    const newCurrentCategoryData: Category = {
+    const newCurrentCategoryData: CategoryType = {
       ...currentCategory,
       cardIds: currentCategory.cardIds.filter(cardId => cardId !== id)
     }
@@ -57,7 +55,7 @@ export const App = () => {
     newCategoriesState = [...newCategoriesState.slice(0, currentCategoryIndex), newCurrentCategoryData, ...newCategoriesState.slice(currentCategoryIndex + 1)]
 
     const expectedCategory = categories[expectedCategoryIndex];
-    const newExpectedCategoryData: Category = {
+    const newExpectedCategoryData: CategoryType = {
       ...expectedCategory,
       cardIds: expectedCategory.cardIds.concat(id)
     }
@@ -82,7 +80,7 @@ export const App = () => {
     <CardContext.Provider value={cardContextValue}>
     <div className="trello-board">
       {categories.map((category, index) => (
-        <CategoryColumn key={`${category.title}-${index}`} data={category} index={index} />
+        <Category key={`${category.title}-${index}`} data={category} index={index} />
       ))}
       <div className='category-column'>
         <AddEntityDataForm entity={Entity.CATEGORY} onSave={addCategory}/>

@@ -1,14 +1,23 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useContext, useState } from 'react';
+import { CardContext } from '../../context';
 import { Card as CardType } from '../../types';
 
 type CardProps = {
-    data: CardType
+    id: CardType['id']
 }
 
-export const Card:React.FC<CardProps> = ({data}) => {
+export const Card:React.FC<CardProps> = (props) => {
+    const {data: allCards } = useContext(CardContext);
+
+    const cardData = allCards.find(card => card.id === props.id);
+
     const [isEditing, setIsEditing] = useState(false);
-    const [titleInputVal, setTitleInputVal] = useState(data.title);
+    const [titleInputVal, setTitleInputVal] = useState(cardData?.title || '');
     
+    if(!cardData) {
+      return null;
+    }
+
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         setTitleInputVal(e.target.value)
     }
@@ -31,7 +40,7 @@ export const Card:React.FC<CardProps> = ({data}) => {
             <button onClick={saveData}>Save</button>
           </div>
     </> : <>
-    <h5>{data.title}</h5>
+    <h5>{cardData.title}</h5>
     <div className="button-group card-button-wrapper">
       <button>Move Left</button>
       <button onClick={() => setIsEditing(true)}>Edit</button>

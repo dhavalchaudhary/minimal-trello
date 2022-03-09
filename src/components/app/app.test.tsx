@@ -56,6 +56,29 @@ describe('App', () => {
     expect(screen.getByTestId('card-list-wrapper').children).toHaveLength(existingCardsLength + 1)
 
   })
+  it('should persist the newly created data', () => {
+    const mockCategoryTitle = "Test Category"
+    const mockCardTitle = "Test Card";
+
+    render(<App />)
+
+    fireEvent.click(screen.getByText(/add new category/i));
+    fireEvent.change(screen.getByPlaceholderText(/add category title/i), {target: {value: mockCategoryTitle}});
+    fireEvent.click(screen.getByTestId('entity-add-save'));
+
+    fireEvent.click(screen.getByText(/add new card/i));
+    fireEvent.change(screen.getByPlaceholderText(/add card title/i), {target: {value: mockCardTitle}});
+    fireEvent.click(screen.getByTestId('entity-add-save'))
+
+    const persistedCardsData = JSON.parse(window.localStorage.getItem(Entity.CARD) || '');
+    const persistedCategoriesData = JSON.parse(window.localStorage.getItem(Entity.CATEGORY) || '');
+
+    expect(persistedCardsData).toHaveLength(1);
+    expect(persistedCardsData[0].title).toStrictEqual(mockCardTitle)
+    expect(persistedCategoriesData).toHaveLength(1);
+    expect(persistedCategoriesData[0].title).toStrictEqual(mockCategoryTitle)
+
+  })
   it('should update a card within a category', () => {
     loadlocalStorage({categories: mockCategoriesData.slice(0,1), cards: mockCardsData});
     

@@ -4,3 +4,24 @@ button,
 input {
   font-family: 'Raleway', sans-serif;
 }
+
+.trello-board {
+  display: flex;
+  width: min-content;
+  overflow-x: scroll;
+}
+
+.category-column {
+  width: 300px;
+  padding: 10px 0px;
+  background: #cccccc;
+  height: fit-content;
+  max-height: 600px;
+  display: flex;
+  flex-direction: column;
+  margin: 20px 40px;
+}
+.category-title-wrapper {
+  padding: 0px 10px;
+  font-weight: bold;
+}

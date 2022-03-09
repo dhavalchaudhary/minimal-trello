@@ -3,10 +3,10 @@ import { Category } from '../types'
 export const mockCategoriesData: Category[] = [
   {
     title: 'Todo',
-    cardIds: []
+    cardIds: ["1"]
   },
   {
     title: 'Done',
-    cardIds: []
+    cardIds: ["2"]
   }
 ]

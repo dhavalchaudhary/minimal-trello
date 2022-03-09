@@ -27,16 +27,16 @@ export const AddEntityDataForm: React.FC<AddEntityDataFormProps> = (props) => {
       <div className="add-card-wrapper">
         <div className="add-data-type-wrapper">
           {isEditing ? (
-            <div className="add-data-type-input-wrapper">
-              <input placeholder={`add ${props.entity} title`} value={inputVal} onChange={handleInputChange} />
+            <div className="add-data-type-input-wrapper" data-testid="entity-data-input-wrapper">
+              <input data-testid="entity-add-input" placeholder={`add ${props.entity} title`} value={inputVal} onChange={handleInputChange} />
               <div className="button-group">
-                <button onClick={resetState}>Cancel</button>
-                <button onClick={saveData}>Save</button>
+                <button data-testid="entity-add-cancel" onClick={resetState}>Cancel</button>
+                <button data-testid="entity-add-save" onClick={saveData}>Save</button>
               </div>
             </div>
           ) : (
             <div className="add-data-type-btn-wrapper">
-              <button onClick={() => setIsEditing(true)}>Add new {props.entity}</button>
+              <button data-testid="add-btn" onClick={() => setIsEditing(true)}>Add new {props.entity}</button>
             </div>
           )}
         </div>

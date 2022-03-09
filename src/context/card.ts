@@ -13,7 +13,7 @@ export type CardContextType = {
       }
 }
 
-const defaultCardContextValue: CardContextType = {
+export const defaultCardContextValue: CardContextType = {
     data: [],
     handlers: {
         addCard: () => {},

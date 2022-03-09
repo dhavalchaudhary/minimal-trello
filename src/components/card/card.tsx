@@ -47,17 +47,17 @@ export const Card:React.FC<CardProps> = (props) => {
 
     return <div className="card">
     {isEditing ? <>
-        <input className="card-edit-input" placeholder="add card title" value={titleInputVal} onChange={handleInputChange} />
+        <input className="card-edit-input" data-testid="card-edit-input" placeholder="add card title" value={titleInputVal} onChange={handleInputChange} />
           <div className="button-group card-button-wrapper">
-            <button onClick={resetState}>Cancel</button>
-            <button onClick={saveData}>Save</button>
+            <button data-testid="card-edit-cancel" onClick={resetState}>Cancel</button>
+            <button data-testid="card-edit-save" onClick={saveData}>Save</button>
           </div>
     </> : <>
     <h5>{cardData.title}</h5>
     <div className="button-group card-button-wrapper">
-      <button disabled={isFirstCategory} onClick={moveLeft}>Move Left</button>
-      <button onClick={() => setIsEditing(true)}>Edit</button>
-      <button disabled={isLastCategory} onClick={moveRight}>Move Right</button>
+      <button disabled={isFirstCategory} onClick={moveLeft} data-testid="move-left-btn">Move Left</button>
+      <button onClick={() => setIsEditing(true)} data-testid="edit-btn">Edit</button>
+      <button disabled={isLastCategory} onClick={moveRight} data-testid="move-right-btn">Move Right</button>
     </div>
     </>}
     

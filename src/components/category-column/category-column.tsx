@@ -1,6 +1,7 @@
 import React from 'react'
 import { mockCardsData } from '../../mockData/cards'
-import { Category } from '../../types'
+import { Category, Entity } from '../../types'
+import { AddEntityDataForm } from '../add-entity-data-form'
 import { Card } from '../card'
 
 type CategoryColumnProps = {
@@ -16,6 +17,7 @@ export const CategoryColumn: React.FC<CategoryColumnProps> = ({ data }) => {
       <div className="card-list-wrapper">
         {mockCardsData.map((card) => <Card data={card} key={card.id} />)}
       </div>
+      <AddEntityDataForm entity={Entity.CARD} />
     </div>
   )
 }

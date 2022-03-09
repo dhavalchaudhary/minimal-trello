@@ -27,7 +27,6 @@ export const AddEntityDataForm: React.FC<AddEntityDataFormProps> = ({
   }
 
   return (
-    <div>
       <div className="add-card-wrapper">
         <div className="add-data-type-wrapper">
           {isEditing ? (
@@ -45,6 +44,5 @@ export const AddEntityDataForm: React.FC<AddEntityDataFormProps> = ({
           )}
         </div>
       </div>
-    </div>
   )
 }

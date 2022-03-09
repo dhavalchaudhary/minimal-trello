@@ -6,6 +6,7 @@ export type CardContextType = {
     handlers: {
         addCard: (title: string, categoryIndex: number) => void,
         updateCard: (cardId: string, data: Partial<Omit<Card, 'id'>>) => void
+        moveCard: (id: string, currentCategoryIndex: number, expectedCategoryIndex: number) => void
     }
 }
 
@@ -13,7 +14,8 @@ const defaultCardContextValue: CardContextType = {
     data: [],
     handlers: {
         addCard: () => {},
-        updateCard: () => {}
+        updateCard: () => {},
+        moveCard: () => {}
     }
 }
 

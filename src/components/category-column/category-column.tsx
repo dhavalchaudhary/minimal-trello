@@ -17,7 +17,7 @@ export const CategoryColumn: React.FC<CategoryColumnProps> = ({ data, index }) =
         <h3>{data.title}</h3>
       </div>
       <div className="card-list-wrapper">
-        {data.cardIds.map((cardId) => <Card id={cardId} key={cardId} />)}
+        {data.cardIds.map((cardId) => <Card id={cardId} key={cardId} categoryIndex={index} />)}
       </div>
       <AddEntityDataForm entity={Entity.CARD} onSave={title => cardHandlers.addCard(title, index)}/>
     </div>

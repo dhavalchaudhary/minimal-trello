@@ -44,11 +44,34 @@ export const App = () => {
     }
   }
 
+  const moveCard = (id: string, currentCategoryIndex: number, expectedCategoryIndex: number) => {
+    let newCategoriesState = categories.slice()
+
+    const currentCategory = categories[currentCategoryIndex];
+    const newCurrentCategoryData: Category = {
+      ...currentCategory,
+      cardIds: currentCategory.cardIds.filter(cardId => cardId !== id)
+    }
+
+    newCategoriesState = [...newCategoriesState.slice(0, currentCategoryIndex), newCurrentCategoryData, ...newCategoriesState.slice(currentCategoryIndex + 1)]
+
+    const expectedCategory = categories[expectedCategoryIndex];
+    const newExpectedCategoryData: Category = {
+      ...expectedCategory,
+      cardIds: expectedCategory.cardIds.concat(id)
+    }
+
+    newCategoriesState = [...newCategoriesState.slice(0, expectedCategoryIndex), newExpectedCategoryData, ...newCategoriesState.slice(expectedCategoryIndex + 1)]
+
+    setCategories(newCategoriesState)
+  }
+
   const cardContextValue: CardContextType = {
     data: cards,
     handlers: {
       addCard,
-      updateCard
+      updateCard,
+      moveCard
     }
   }
   return (

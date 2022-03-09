@@ -24,6 +24,7 @@ Build a trello clone which has the functionality to add new categories and add/e
   - Additional fields like `description` for the cards. Currently, it supports only `title`.
   - Delete a card
   - Move a card within a single category
+  - Changing the order of the categories
 - Due to the time constraint, the testing strategy for this application focused solely on testing for the happy path. The type of tests written majorly include integrations tests and limited unit tests
 - The UX of the application is very simple and has little to no styling. It only supports desktop screens and uses the `Raleway` font, `reset.css` library to remove all default browser styling and some custom css.
 
@@ -72,6 +73,7 @@ npm run prettier
 This section contains potential topics to improve user experience and developer experience
 
 - Better User Experience by investing in design and adding more features to the application.
+- Improve the accessibility of the platform. For example, automatically focusing on inputs when using a mouse, submitting forms using keyboards and more.
 - Developer Experience
   - Testing
     - Adding a full suite of integration as well as unit testing to the application. These tests will also cover all the edge cases.

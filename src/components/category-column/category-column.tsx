@@ -17,7 +17,7 @@ export const CategoryColumn: React.FC<CategoryColumnProps> = ({ data }) => {
       <div className="card-list-wrapper">
         {mockCardsData.map((card) => <Card data={card} key={card.id} />)}
       </div>
-      <AddEntityDataForm entity={Entity.CARD} />
+      <AddEntityDataForm entity={Entity.CARD} onSave={title => console.log(title)}/>
     </div>
   )
 }

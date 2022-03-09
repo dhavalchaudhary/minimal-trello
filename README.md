@@ -30,6 +30,8 @@ Build a trello clone which has the functionality to add new categories and add/e
 
 ## Technical documentation for running the project
 
+### Live Site - https://minimal-trello.netlify.app/
+
 ### Prerequisites
 
 - Ensure that the node package used in the machine `17.x.x`. Using the older versions might result into unforseen issues.

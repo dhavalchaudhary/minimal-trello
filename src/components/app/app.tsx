@@ -11,7 +11,7 @@ export const App = () => {
   const [categories, setCategories] = useState<Category[]>(mockCategoriesData);
   const [cards, setCards] = useState<Card[]>(mockCardsData)
 
-  const addNewCategory = (title: string) => {
+  const addCategory = (title: string) => {
     const newCategoryObj: Category = {
       title,
       cardIds: []
@@ -19,7 +19,7 @@ export const App = () => {
     setCategories([...categories, newCategoryObj])
   }
 
-  const addNewCard: CardContextType['handlers']['addNewCard'] = (title, categoryIndex) => {
+  const addCard: CardContextType['handlers']['addCard'] = (title, categoryIndex) => {
     const newCardObj: Card = {
       title,
       id: uuidv4()
@@ -47,7 +47,7 @@ export const App = () => {
   const cardContextValue: CardContextType = {
     data: cards,
     handlers: {
-      addNewCard,
+      addCard,
       updateCard
     }
   }
@@ -58,7 +58,7 @@ export const App = () => {
         <CategoryColumn key={`${category.title}-${index}`} data={category} index={index} />
       ))}
       <div className='category-column'>
-        <AddEntityDataForm entity={Entity.CATEGORY} onSave={addNewCategory}/>
+        <AddEntityDataForm entity={Entity.CATEGORY} onSave={addCategory}/>
       </div>
     </div>
     </CardContext.Provider>

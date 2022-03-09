@@ -4,7 +4,7 @@ import { Card } from '../types';
 export type CardContextType = {
     data: Card[],
     handlers: {
-        addNewCard: (title: string, categoryIndex: number) => void,
+        addCard: (title: string, categoryIndex: number) => void,
         updateCard: (cardId: string, data: Partial<Omit<Card, 'id'>>) => void
     }
 }
@@ -12,7 +12,7 @@ export type CardContextType = {
 const defaultCardContextValue: CardContextType = {
     data: [],
     handlers: {
-        addNewCard: () => {},
+        addCard: () => {},
         updateCard: () => {}
     }
 }

@@ -1,6 +1,6 @@
-import { CategoryType } from "../types";
+import { Category } from "../types";
 
-export const mockCategoriesData: CategoryType[] = [
+export const mockCategoriesData: Category[] = [
     {
         title: "Todo",
         cardIds: []

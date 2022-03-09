@@ -1,14 +1,14 @@
-export enum EntityType {
+export enum Entity {
     CARD = "CARD",
     CATEGORY = "CATEGORY"
 }
 
-export type CardType = {
+export type Card = {
     title: string,
     id: string,
 }
 
-export type CategoryType = {
+export type Category = {
     title: string,
-    cardIds: CardType['id'][]
+    cardIds: Card['id'][]
 }

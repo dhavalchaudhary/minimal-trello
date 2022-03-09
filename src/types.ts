@@ -1,6 +1,6 @@
 export enum Entity {
-  CARD = 'CARD',
-  CATEGORY = 'CATEGORY'
+  CARD = 'card',
+  CATEGORY = 'category'
 }
 
 export type Card = {

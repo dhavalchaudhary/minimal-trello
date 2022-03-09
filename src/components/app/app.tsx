@@ -6,10 +6,11 @@ import {  Card, Category, Entity } from '../../types'
 import { AddEntityDataForm } from '../add-entity-data-form'
 import { CategoryColumn } from '../category-column'
 import { v4 as uuidv4 } from 'uuid';
+import {usePersistedState} from '../../hooks';
 
 export const App = () => {
-  const [categories, setCategories] = useState<Category[]>(mockCategoriesData);
-  const [cards, setCards] = useState<Card[]>(mockCardsData)
+  const [categories, setCategories] = usePersistedState<Category[]>(Entity.CATEGORY, []);
+  const [cards, setCards] = usePersistedState<Card[]>(Entity.CARD, [])
 
   const addCategory = (title: string) => {
     const newCategory: Category = {

@@ -12,35 +12,35 @@ export const App = () => {
   const [cards, setCards] = useState<Card[]>(mockCardsData)
 
   const addCategory = (title: string) => {
-    const newCategoryObj: Category = {
+    const newCategory: Category = {
       title,
       cardIds: []
     }
-    setCategories([...categories, newCategoryObj])
+    setCategories([...categories, newCategory])
   }
 
   const addCard: CardContextType['handlers']['addCard'] = (title, categoryIndex) => {
-    const newCardObj: Card = {
+    const newCard: Card = {
       title,
       id: uuidv4()
     };
 
-    const categoryObj = categories[categoryIndex]
-    const newCategoryObj: Category = {
-      ...categoryObj,
-      cardIds: [...categoryObj.cardIds, newCardObj.id]
+    const category = categories[categoryIndex]
+    const newCategory: Category = {
+      ...category,
+      cardIds: [...category.cardIds, newCard.id]
     }
 
-    setCards([...cards, newCardObj])
-    setCategories([...categories.slice(0,categoryIndex), newCategoryObj, ...categories.slice(categoryIndex + 1)])
+    setCards([...cards, newCard])
+    setCategories([...categories.slice(0,categoryIndex), newCategory, ...categories.slice(categoryIndex + 1)])
   }
 
   const updateCard: CardContextType['handlers']['updateCard'] = (cardId, data) => {
     const currentCardIndex = cards.findIndex(card => card.id === cardId);
     if(currentCardIndex > -1) {
-      const newCardObj: Card = {...cards[currentCardIndex], ...data};
+      const newCard: Card = {...cards[currentCardIndex], ...data};
 
-      setCards([...cards.slice(0,currentCardIndex), newCardObj, ...cards.slice(currentCardIndex + 1)])
+      setCards([...cards.slice(0,currentCardIndex), newCard, ...cards.slice(currentCardIndex + 1)])
     }
   }
 

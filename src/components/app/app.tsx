@@ -35,10 +35,20 @@ export const App = () => {
     setCategories([...categories.slice(0,categoryIndex), newCategoryObj, ...categories.slice(categoryIndex + 1)])
   }
 
+  const updateCard: CardContextType['handlers']['updateCard'] = (cardId, data) => {
+    const currentCardIndex = cards.findIndex(card => card.id === cardId);
+    if(currentCardIndex > -1) {
+      const newCardObj: Card = {...cards[currentCardIndex], ...data};
+
+      setCards([...cards.slice(0,currentCardIndex), newCardObj, ...cards.slice(currentCardIndex + 1)])
+    }
+  }
+
   const cardContextValue: CardContextType = {
     data: cards,
     handlers: {
-      addNewCard
+      addNewCard,
+      updateCard
     }
   }
   return (

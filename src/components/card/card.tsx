@@ -7,7 +7,7 @@ type CardProps = {
 }
 
 export const Card:React.FC<CardProps> = (props) => {
-    const {data: allCards } = useContext(CardContext);
+    const {data: allCards, handlers: cardHandlers } = useContext(CardContext);
 
     const cardData = allCards.find(card => card.id === props.id);
 
@@ -27,8 +27,7 @@ export const Card:React.FC<CardProps> = (props) => {
     }
 
     const saveData = () => {
-        // sync with state
-        console.log(titleInputVal);
+        cardHandlers.updateCard(cardData.id, {title: titleInputVal});
         resetState()
     }
 

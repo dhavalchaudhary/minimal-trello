@@ -43,6 +43,9 @@ input {
 .card-button-wrapper {
   margin-top: 10px;
 }
+.card input {
+  width: calc(100% - 10px);
+}
 .add-data-type-wrapper {
   padding: 0px 10px;
 }
@@ -52,7 +55,6 @@ input {
 .add-data-type-btn-wrapper button {
   text-transform: capitalize;
 }
-
 .add-data-type-input-wrapper input {
   width: calc(100% - 10px);
   margin-bottom: 10px;

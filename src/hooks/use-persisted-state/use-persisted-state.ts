@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import React, { useEffect, useState, Dispatch, SetStateAction } from 'react';
 
 export const usePersistedState = <T>(key: string, defaultValue: T): [T, Dispatch<SetStateAction<T>>] => {
@@ -9,7 +10,7 @@ export const usePersistedState = <T>(key: string, defaultValue: T): [T, Dispatch
 
     useEffect(() => {
         localStorage.setItem(key, JSON.stringify(val))
-    }, [val])
+    }, [key, val])
 
     return [val, setVal]
 }

@@ -5,21 +5,26 @@ import { AddEntityDataForm } from '../add-entity-data-form'
 import { Card } from '../card'
 
 type CategoryProps = {
-  data: CategoryType;
+  data: CategoryType
   index: number
 }
 
 export const Category: React.FC<CategoryProps> = ({ data, index }) => {
-  const {handlers: cardHandlers} = useContext(CardContext) 
+  const { handlers: cardHandlers } = useContext(CardContext)
   return (
     <div className="category-column" data-testid="category-column">
       <div className="category-title-wrapper">
         <h3>{data.title}</h3>
       </div>
       <div className="card-list-wrapper" data-testid="card-list-wrapper">
-        {data.cardIds.map((cardId) => <Card id={cardId} key={cardId} categoryIndex={index} />)}
+        {data.cardIds.map((cardId) => (
+          <Card id={cardId} key={cardId} categoryIndex={index} />
+        ))}
       </div>
-      <AddEntityDataForm entity={Entity.CARD} onSave={title => cardHandlers.addCard(title, index)}/>
+      <AddEntityDataForm
+        entity={Entity.CARD}
+        onSave={(title) => cardHandlers.addCard(title, index)}
+      />
     </div>
   )
 }

@@ -82,7 +82,7 @@ export const App = () => {
       {categories.map((category, index) => (
         <Category key={`${category.title}-${index}`} data={category} index={index} />
       ))}
-      <div className='category-column'>
+      <div className='category-column' data-testid="add-category-column">
         <AddEntityDataForm entity={Entity.CATEGORY} onSave={addCategory}/>
       </div>
     </div>

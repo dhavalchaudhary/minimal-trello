@@ -22,8 +22,8 @@ describe('Card', () => {
     it('renders the card title and action buttons', () => {
         render(<CardContext.Provider value={mockCardContextValue}><Card id={mockCardId} categoryIndex={mockIndex} /></CardContext.Provider>);
         expect(screen.getByText(mockCardData.title)).toBeVisible();
-        expect(screen.getByTestId('move-left-btn')).toBeVisible()
-        expect(screen.getByTestId('move-right-btn')).toBeVisible()
+        expect(screen.getByTestId('card-move-left-btn')).toBeVisible()
+        expect(screen.getByTestId('card-move-right-btn')).toBeVisible()
     })
     it('disables the invalid move left button', () => {
         mockCardContextValue = {
@@ -34,8 +34,8 @@ describe('Card', () => {
         }
         render(<CardContext.Provider value={mockCardContextValue}><Card id={mockCardId} categoryIndex={mockIndex} /></CardContext.Provider>);
 
-        expect(screen.getByTestId('move-left-btn')).toBeDisabled()
-        expect(screen.getByTestId('move-right-btn')).not.toBeDisabled()
+        expect(screen.getByTestId('card-move-left-btn')).toBeDisabled()
+        expect(screen.getByTestId('card-move-right-btn')).not.toBeDisabled()
 
     })
     it('disables the invalid move right button', () => {
@@ -48,14 +48,14 @@ describe('Card', () => {
         }
         render(<CardContext.Provider value={mockCardContextValue}><Card id={mockCardId} categoryIndex={mockIndex} /></CardContext.Provider>);
 
-        expect(screen.getByTestId('move-right-btn')).toBeDisabled()
-        expect(screen.getByTestId('move-left-btn')).not.toBeDisabled()
+        expect(screen.getByTestId('card-move-right-btn')).toBeDisabled()
+        expect(screen.getByTestId('card-move-left-btn')).not.toBeDisabled()
 
     })
     it('displays the input elements when clicked on edit', () => {
         render(<CardContext.Provider value={mockCardContextValue}><Card id={mockCardId} categoryIndex={mockIndex} /></CardContext.Provider>);
         
-        fireEvent.click(screen.getByTestId('edit-btn'))
+        fireEvent.click(screen.getByTestId('card-edit-btn'))
         
         expect(screen.getByTestId('card-edit-input')).toBeVisible();
         expect(screen.getByTestId('card-edit-cancel')).toBeVisible();

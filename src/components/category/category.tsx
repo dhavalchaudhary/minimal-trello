@@ -12,7 +12,7 @@ type CategoryProps = {
 export const Category: React.FC<CategoryProps> = ({ data, index }) => {
   const {handlers: cardHandlers} = useContext(CardContext) 
   return (
-    <div className="category-column">
+    <div className="category-column" data-testid="category-column">
       <div className="category-title-wrapper">
         <h3>{data.title}</h3>
       </div>

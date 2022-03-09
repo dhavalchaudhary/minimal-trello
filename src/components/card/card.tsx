@@ -55,9 +55,9 @@ export const Card:React.FC<CardProps> = (props) => {
     </> : <>
     <h5>{cardData.title}</h5>
     <div className="button-group card-button-wrapper">
-      <button disabled={isFirstCategory} onClick={moveLeft} data-testid="move-left-btn">Move Left</button>
-      <button onClick={() => setIsEditing(true)} data-testid="edit-btn">Edit</button>
-      <button disabled={isLastCategory} onClick={moveRight} data-testid="move-right-btn">Move Right</button>
+      <button disabled={isFirstCategory} onClick={moveLeft} data-testid="card-move-left-btn">Move Left</button>
+      <button onClick={() => setIsEditing(true)} data-testid="card-edit-btn">Edit</button>
+      <button disabled={isLastCategory} onClick={moveRight} data-testid="card-move-right-btn">Move Right</button>
     </div>
     </>}
     

@@ -8,10 +8,11 @@ type CardProps = {
 }
 
 export const Card:React.FC<CardProps> = (props) => {
-    const {data: allCards, handlers: cardHandlers } = useContext(CardContext);
+    const cardContext = useContext(CardContext);
 
-    const cardData = allCards.find(card => card.id === props.id);
-
+    const cardData = cardContext.data.find(card => card.id === props.id);
+    const isFirstCategory = props.categoryIndex === 0;
+    const isLastCategory = props.categoryIndex === cardContext.meta.totalCategories - 1;
     const [isEditing, setIsEditing] = useState(false);
     const [titleInputVal, setTitleInputVal] = useState(cardData?.title || '');
     
@@ -28,16 +29,20 @@ export const Card:React.FC<CardProps> = (props) => {
     }
 
     const saveData = () => {
-        cardHandlers.updateCard(cardData.id, {title: titleInputVal});
+      cardContext.handlers.updateCard(cardData.id, {title: titleInputVal});
         resetState()
     }
 
     const moveLeft = () => {
-      cardHandlers.moveCard(cardData.id, props.categoryIndex, props.categoryIndex - 1)
+      if(props.categoryIndex >= 0){
+        cardContext.handlers.moveCard(cardData.id, props.categoryIndex, props.categoryIndex - 1)
+    }
     }
 
     const moveRight = () => {
-      cardHandlers.moveCard(cardData.id, props.categoryIndex, props.categoryIndex + 1)
+      if(props.categoryIndex < cardContext.meta.totalCategories - 1){
+        cardContext.handlers.moveCard(cardData.id, props.categoryIndex, props.categoryIndex + 1)
+      }
     }
 
     return <div className="card">
@@ -50,9 +55,9 @@ export const Card:React.FC<CardProps> = (props) => {
     </> : <>
     <h5>{cardData.title}</h5>
     <div className="button-group card-button-wrapper">
-      <button onClick={moveLeft}>Move Left</button>
+      <button disabled={isFirstCategory} onClick={moveLeft}>Move Left</button>
       <button onClick={() => setIsEditing(true)}>Edit</button>
-      <button onClick={moveRight}>Move Right</button>
+      <button disabled={isLastCategory} onClick={moveRight}>Move Right</button>
     </div>
     </>}
     

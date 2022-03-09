@@ -72,6 +72,9 @@ export const App = () => {
       addCard,
       updateCard,
       moveCard
+    },
+    meta: {
+      totalCategories: categories.length
     }
   }
   return (

@@ -7,7 +7,10 @@ export type CardContextType = {
         addCard: (title: string, categoryIndex: number) => void,
         updateCard: (cardId: string, data: Partial<Omit<Card, 'id'>>) => void
         moveCard: (id: string, currentCategoryIndex: number, expectedCategoryIndex: number) => void
-    }
+    },
+    meta: {
+        totalCategories: number
+      }
 }
 
 const defaultCardContextValue: CardContextType = {
@@ -16,7 +19,10 @@ const defaultCardContextValue: CardContextType = {
         addCard: () => {},
         updateCard: () => {},
         moveCard: () => {}
-    }
+    },
+    meta: {
+        totalCategories: 0
+      }
 }
 
 export const CardContext = React.createContext<CardContextType>(defaultCardContextValue)
